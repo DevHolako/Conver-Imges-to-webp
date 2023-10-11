@@ -1,15 +1,17 @@
 import os
 from PIL import Image
 
-# Define a global folder for storing old image files
-old_images_folder = "old_pic"
-
 def convert_images_to_webp(input_folder, output_folder=None):
     # If output folder is not specified, set it to the same as the input folder
     if output_folder is None:
         output_folder = input_folder
 
-    # Create the "old_pic" folder if it doesn't exist
+    # Create the output folder if it doesn't exist
+    if not os.path.exists(output_folder):
+        os.makedirs(output_folder)
+
+    # Create the "old_pic" folder within the input folder if it doesn't exist
+    old_images_folder = os.path.join(input_folder, "old_pic")
     if not os.path.exists(old_images_folder):
         os.makedirs(old_images_folder)
 
