@@ -9,10 +9,6 @@ def convert_images_to_webp(input_folder, output_folder=None):
     if output_folder is None:
         output_folder = input_folder
 
-    # Create the output folder if it doesn't exist
-    if not os.path.exists(output_folder):
-        os.makedirs(output_folder)
-
     # Create the "old_pic" folder if it doesn't exist
     if not os.path.exists(old_images_folder):
         os.makedirs(old_images_folder)
@@ -21,6 +17,8 @@ def convert_images_to_webp(input_folder, output_folder=None):
         # Check if the file is an image (PNG/JPG/JPEG)
         if filename.lower().endswith(('.png', '.jpg', '.jpeg')):
             input_path = os.path.join(input_folder, filename)
+
+            # Calculate the output path for .webp files
             output_path = os.path.join(output_folder, os.path.splitext(filename)[0] + '.webp')
 
             # Open the image file
